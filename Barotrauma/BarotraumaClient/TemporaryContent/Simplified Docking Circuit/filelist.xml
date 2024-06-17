@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contentpackage name="Simplified Docking Circuit" modversion="1.0.0" corepackage="False" gameversion="1.4.6.0">
+  <ItemAssembly file="%ModDir%/Simplified Docking Circuit.xml" />
+</contentpackage>

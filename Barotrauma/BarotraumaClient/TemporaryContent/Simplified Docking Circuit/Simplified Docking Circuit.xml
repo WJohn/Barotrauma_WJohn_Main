@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ItemAssembly name="Simplified Docking Circuit" description="A simplified docking circuit that uses far fewer wires than those currently used on all Vanilla Submarines and Shuttles." hideinmenus="false">
+  <Item name="" identifier="circuitbox" ID="4" markedfordeconstruction="false" rect="-16,16,32,32" NonInteractable="False" NonPlayerTeamInteractable="False" AllowSwapping="True" Rotation="0" Scale="0.5" SpriteColor="255,255,255,255" InventoryIconColor="255,255,255,255" ContainerColor="255,255,255,255" InvulnerableToDamage="False" Tags="smallitem" DisplaySideBySideWhenLinked="False" DisallowedUpgrades="" SpriteDepth="0.8" HiddenInGame="False" conditionpercentage="100">
+    <Holdable Attached="True" SpriteDepthWhenDropped="0.55" PickingTime="5" CanBePicked="True" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="True" Msg="ItemMsgDetachWrench">
+      <requireditem items="wrench" type="Equipped" characterinventoryslottype="None" optional="false" ignoreineditor="false" excludebroken="true" requireempty="false" excludefullcondition="false" targetslot="-1" allowvariants="true" rotation="0" setactive="false" />
+    </Holdable>
+    <ConnectionPanel Locked="False" PickingTime="0" CanBePicked="False" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="True" Msg="ItemMsgRewireScrewdriver">
+      <requireditem items="screwdriver" type="Equipped" characterinventoryslottype="None" optional="false" ignoreineditor="false" excludebroken="true" requireempty="false" excludefullcondition="false" targetslot="-1" allowvariants="true" rotation="0" setactive="false" />
+      <input name="signal_in1" />
+      <input name="signal_in2" />
+      <input name="signal_in3" />
+      <input name="signal_in4" />
+      <input name="signal_in5" />
+      <input name="signal_in6" />
+      <input name="signal_in7" />
+      <input name="signal_in8" />
+      <output name="signal_out1" />
+      <output name="signal_out2" />
+      <output name="signal_out3" />
+      <output name="signal_out4" />
+      <output name="signal_out5" />
+      <output name="signal_out6" />
+      <output name="signal_out7" />
+      <output name="signal_out8" />
+    </ConnectionPanel>
+    <ItemContainer QuickUseMovesItemsInside="False" ContainableRestrictions="" AutoFill="True" PickingTime="0" CanBePicked="False" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="True" Msg="" contained="5,6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,," ExtraStackSize="0" />
+    <ItemContainer QuickUseMovesItemsInside="False" ContainableRestrictions="" AutoFill="True" PickingTime="0" CanBePicked="False" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="True" Msg="" contained=",,,,,,,,," ExtraStackSize="0" />
+    <CircuitBox Locked="False" PickingTime="0" CanBePicked="False" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="True" Msg="ItemMsgInteractSelect">
+      <InputNode pos="-512,0" />
+      <OutputNode pos="512,0" />
+      <Component id="0" position="-117.421875,-146.45044" backingitemid="0,0" usedresource="fpgacircuit" />
+      <Component id="1" position="-114.85901,178.33136" backingitemid="1,0" usedresource="fpgacircuit" />
+      <Wire id="0" backingitemid="" prefab="bluewire">
+        <From name="signal_in1" target="" />
+        <To name="signal_in1" target="1" />
+      </Wire>
+      <Wire id="1" backingitemid="" prefab="bluewire">
+        <From name="signal_in1" target="" />
+        <To name="set_state" target="1" />
+      </Wire>
+      <Wire id="2" backingitemid="" prefab="bluewire">
+        <From name="signal_out1" target="1" />
+        <To name="signal_out1" target="" />
+      </Wire>
+      <Wire id="3" backingitemid="" prefab="bluewire">
+        <From name="signal_out" target="0" />
+        <To name="signal_out1" target="" />
+      </Wire>
+      <Wire id="4" backingitemid="" prefab="bluewire">
+        <From name="signal_in2" target="" />
+        <To name="signal_in" target="0" />
+      </Wire>
+      <Label id="0" color="#7ED3E0" position="-707.42883,36.412354" size="175.77356,8" header="On_Undock" body="" />
+      <Label id="1" color="#7ED3E0" position="-708.7614,92.57007" size="175.77325,8" header="State_Out" body="" />
+      <Label id="2" color="#7ED3E0" position="708.49176,92.25141" size="151.70135,8" header="Set_State" body="" />
+      <Label id="3" color="#7ED3E0" position="-760.5117,224.02917" size="266.5462,120.22708" header="Docking Port Output" body="When docked, the Docking Port will force the Hatch to stay open. Upon undocking, it will pulse the Hatch to close." />
+      <Label id="4" color="#7ED3E0" position="829.60236,205.53455" size="398.93762,108.1691" header="Hatch Input" body="The Hatch is either continuously forced to stay open when docked, or is pulsed to shut upon undocking with no further signals. As a reuslt, this allows buttons to easily toggle it open or close with toggle_state." />
+    </CircuitBox>
+    <itemstats />
+  </Item>
+  <Item name="" identifier="relaycomponent" ID="6" markedfordeconstruction="false" rect="168,-48,16,16" NonInteractable="False" NonPlayerTeamInteractable="False" AllowSwapping="True" Rotation="0" Scale="0.5" SpriteColor="255,255,255,255" InventoryIconColor="255,255,255,255" ContainerColor="255,255,255,255" InvulnerableToDamage="False" Tags="logic,signal,circuitboxcomponent,smallitem" DisplaySideBySideWhenLinked="False" DisallowedUpgrades="" SpriteDepth="0.8" HiddenInGame="False" conditionpercentage="100" hideinassemblypreview="true">
+    <RelayComponent MaxPower="1000" IsOn="True" CanBeOverloaded="False" OverloadVoltage="2" FireProbability="0.15" IsActive="True" MinVoltage="0" PowerConsumption="0" Voltage="1" VulnerableToEMP="False" PickingTime="0" CanBePicked="False" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="True" Msg="" />
+    <Holdable SpriteDepthWhenDropped="0.55" PickingTime="5" CanBePicked="True" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="True" Msg="ItemMsgDetachWrench">
+      <requireditem items="wrench" type="Equipped" characterinventoryslottype="None" optional="false" ignoreineditor="false" excludebroken="true" requireempty="false" excludefullcondition="false" targetslot="-1" allowvariants="true" rotation="0" setactive="false" />
+    </Holdable>
+    <ConnectionPanel Locked="False" PickingTime="0" CanBePicked="False" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="True" Msg="ItemMsgRewireScrewdriver">
+      <requireditem items="screwdriver" type="Equipped" characterinventoryslottype="None" optional="false" ignoreineditor="false" excludebroken="true" requireempty="false" excludefullcondition="false" targetslot="-1" allowvariants="true" rotation="0" setactive="false" />
+      <input name="power_in" />
+      <input name="signal_in1" />
+      <input name="signal_in2" />
+      <input name="toggle" />
+      <input name="set_state" />
+      <output name="power_out" />
+      <output name="signal_out1" />
+      <output name="signal_out2" />
+      <output name="state_out" />
+      <output name="load_value_out" />
+      <output name="power_value_out" />
+    </ConnectionPanel>
+  </Item>
+  <Item name="" identifier="signalcheckcomponent" ID="5" markedfordeconstruction="false" rect="168,-48,16,16" NonInteractable="False" NonPlayerTeamInteractable="False" AllowSwapping="True" Rotation="0" Scale="0.5" SpriteColor="255,255,255,255" InventoryIconColor="255,255,255,255" ContainerColor="255,255,255,255" InvulnerableToDamage="False" Tags="logic,circuitboxcomponent,smallitem" DisplaySideBySideWhenLinked="False" DisallowedUpgrades="" SpriteDepth="0.8" HiddenInGame="False" conditionpercentage="100" hideinassemblypreview="true">
+    <SignalCheckComponent MaxOutputLength="200" Output="0" FalseOutput="" TargetSignal="1" PickingTime="0" CanBePicked="False" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="True" Msg="" />
+    <Holdable SpriteDepthWhenDropped="0.55" PickingTime="5" CanBePicked="True" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="True" Msg="ItemMsgDetachWrench">
+      <requireditem items="wrench" type="Equipped" characterinventoryslottype="None" optional="false" ignoreineditor="false" excludebroken="true" requireempty="false" excludefullcondition="false" targetslot="-1" allowvariants="true" rotation="0" setactive="false" />
+    </Holdable>
+    <ConnectionPanel Locked="False" PickingTime="0" CanBePicked="False" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="True" Msg="ItemMsgRewireScrewdriver">
+      <requireditem items="screwdriver" type="Equipped" characterinventoryslottype="None" optional="false" ignoreineditor="false" excludebroken="true" requireempty="false" excludefullcondition="false" targetslot="-1" allowvariants="true" rotation="0" setactive="false" />
+      <input name="signal_in" />
+      <input name="set_output" />
+      <input name="set_targetsignal" />
+      <output name="signal_out" />
+    </ConnectionPanel>
+  </Item>
+</ItemAssembly>
